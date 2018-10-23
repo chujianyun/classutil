@@ -36,11 +36,7 @@ public class ClassUtilTest {
         System.out.println(catNameValueMap);
         Assert.assertEquals(2,catNameValueMap.size() );
 
-        Map<String, String> personNameValueMap = ClassUtil.covertToNameValueMap(person);
-        System.out.println(personNameValueMap);
-        Assert.assertEquals(4,personNameValueMap.size() );
-
-        Map<String, String> personNameValueMapIgnore = ClassUtil.covertToNameValueMap(person, IgnoreField.class);
+        Map<String, String> personNameValueMapIgnore = ClassUtil.covertToNameValueMap(person);
         System.out.println(personNameValueMapIgnore);
         Assert.assertEquals(3,personNameValueMapIgnore.size() );
 

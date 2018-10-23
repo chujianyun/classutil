@@ -14,27 +14,15 @@ import java.util.Map;
 public class ClassUtil {
 
 
+
+
     /**
      * 将类中属性（如果属性为对象则递归)，转为map键值对
+     * 排除带IgnoreField注解的属性 {@link IgnoreField}
+     * @param obj               带解析的对象
      *
-     * @param obj 带解析的对象
      */
     public static <T> Map<String, String> covertToNameValueMap(T obj) {
-
-        if (obj == null) {
-            throw new IllegalArgumentException("the object to convert is empty");
-        }
-
-        return covertToNameValueMap(obj, null);
-    }
-
-    /**
-     * 将类中属性（如果属性为对象则递归)，转为map键值对
-     *
-     * @param obj               带解析的对象
-     * @param excludeAnnotation 排除带该注解的属性 {@link IgnoreField}
-     */
-    public static <T> Map<String, String> covertToNameValueMap(T obj, Class<? extends Annotation> excludeAnnotation) {
 
         if (obj == null) {
             throw new IllegalArgumentException("the object to convert is empty");
@@ -49,7 +37,7 @@ public class ClassUtil {
 
         for (Field field : declaredFields) {
 
-            if (excludeAnnotation != null && field.isAnnotationPresent(excludeAnnotation)) {
+            if (field.isAnnotationPresent(IgnoreField.class)) {
                 continue;
             }
             field.setAccessible(true);
