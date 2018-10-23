@@ -1,5 +1,7 @@
 package com.github.chujianyun.util;
 
+import com.github.chujianyun.annotation.IgnoreField;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -30,7 +32,7 @@ public class ClassUtil {
      * 将类中属性（如果属性为对象则递归)，转为map键值对
      *
      * @param obj               带解析的对象
-     * @param excludeAnnotation 排除带该注解的属性
+     * @param excludeAnnotation 排除带该注解的属性 {@link IgnoreField}
      */
     public static <T> Map<String, String> covertToNameValueMap(T obj, Class<? extends Annotation> excludeAnnotation) {
 
