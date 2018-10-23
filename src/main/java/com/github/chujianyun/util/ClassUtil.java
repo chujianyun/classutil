@@ -60,7 +60,7 @@ public class ClassUtil {
             if (isCommonType) {
                 nameValueMap.put(field.getName(), value.toString());
             } else {
-                nameValueMap.putAll(covertToNameValueMap(value, excludeAnnotation));
+                nameValueMap.putAll(covertToNameValueMap(value));
             }
         }
 
